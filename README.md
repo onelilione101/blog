@@ -1,5 +1,4 @@
-# blog
+# 博客是不可能写的，这辈子都不会写的
 
-This is my first commit
+就当这个是作业仓库吧
 
-second
