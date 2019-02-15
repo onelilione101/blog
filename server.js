@@ -20,21 +20,21 @@ var server = http.createServer(function(request, response){
   /******** 从这里开始看，上面不要看 ************/
 
   console.log('HTTP 路径为\n' + path)
-  if(path == '/style'){
+  if(path == '/style.css'){
     response.setHeader('Content-Type', 'text/css; charset=utf-8')
     response.write('body{background-color:yellow;}h1{color:black;}')
     response.end()
-  }else if(path == '/script'){
+  }else if(path == '/main.js'){
     response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
     response.write('alert("皮一下很开心")')
     response.end()
-  }else if(path == '/index'){
+  }else if(path == '/'){
     response.setHeader('Content-Type', 'text/html; charset=utf-8')
     response.write('<!DOCTYPE>\n<html>' +
-    '<head><link rel="stylesheet" href="/style">' +
+    '<head><link rel="stylesheet" href="/style.css">' +
     '</head><body>' +
     '<h1>你好</h1>' +
-    '<script src="/script"></script>' +
+    '<script src="/main.js"></script>' +
     '</body></html>')
     response.end()
   }else{
