@@ -15,6 +15,12 @@ hr{
   border: none;
   border-top: 1px solid #DEDEDE;
 }
+ul,ol{
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
 .clearfix::after {
   content: '';
   display: block;
@@ -29,7 +35,7 @@ hr{
   width: 100%;
 }
 .topNavBar-inner {
-  padding: 0 16px;
+  padding: 0 50px;
 }
 .topNavBar nav {
   padding-top: 7px;
@@ -55,7 +61,7 @@ hr{
   display: block;
 }
 .topNavBar nav > ul > li > a:hover {
-  border-bottom: 3px solid #e06567;
+  border-bottom: 3px solid skyblue;
 }
 
 .topNavBar .logo {
@@ -66,14 +72,14 @@ hr{
 }
 .topNavBar .logo .rs {
   margin-right: 4px;
-  color: #e6686a;
+  color: skyblue;
 }
 .topNavBar .logo .card {
   color: #9a9da2;
 }
 .banner {
   height: 515px;
-  background-image: url('./bg.png');
+  background-image: url('./99.jpg');
   background-position: center center;
   background-size: cover;
 }
@@ -87,11 +93,13 @@ hr{
   margin-left: auto;
   margin-right: auto;
   background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .userCard .welcome {
-  background: #e6686a;
+  background: skyblue;
   color: white;
-  display: inline-block;
+  /*display: inline-block;*/
   padding: 4px 16px;
   line-height: 22px;
   position: relative;
@@ -101,7 +109,7 @@ hr{
   display: block;
   border: 10px solid transparent;
   width: 0px;
-  border-left-color: #e6686a;
+  border-left-color: skyblue;
   border-top-width: 0px;
   position: absolute;
   left: 4px;
@@ -139,8 +147,10 @@ hr{
 }
 
 .userCard > footer.media{
-  background: #E6686A;
+  background: skyblue;
   text-align: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .userCard > footer.media > a{
   display: inline-block;
@@ -151,7 +161,7 @@ hr{
   margin: 16px 25px;
 }
 .userCard > footer.media > a:hover{
-  background: #CF5D5F;
+  background: rgb(100, 137, 200);
 }
 .userCard svg{
   width: 40px;
@@ -162,4 +172,147 @@ hr{
 .userCard p{
   font-weight: bold;
   margin-top: 10px;
+}
+body > main{
+  margin-top: -340px;
+}
+
+body > main .buttonWrapper{
+  text-align: center;
+
+}
+body > main .button{
+  font-size: 14px;
+  line-height: 16px;
+  padding: 21px 55px;
+  border: 1px solid #cdcfd1;
+  background: #efefef;
+  border-radius: 2px;
+  color: #3D4451;
+  font-weight: bold;
+  margin: 30px 0;
+  display: inline-block;
+  transition: box-shadow 0.3s;
+}
+body > main .button:hover{
+  box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.2);
+
+}
+.selfIntroduction{
+  max-width: 940px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2;
+  font-size: 20px;
+  font-family: "楷体";
+
+}
+section.skills,
+section.portfolio{
+  max-width: 940px;
+  margin: 0 auto;
+  margin-top: 60px;
+
+}
+section.skills > h2,
+section.portfolio > h2{
+  text-align: center;
+  color: #3d4451;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+section.skills h3{
+  font-size: 14px;
+  line-height: 1.1;
+  padding-right: 40px;
+  
+}
+
+section.skills > ol{
+  background: #fff;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  padding: 42px 50px 10px;
+  margin-top: 30px;
+}
+section.skills > ol > li{
+  float: left;
+  width: 47%;
+  box-sizing: border-box;
+
+}
+section.skills > ol > li:nth-child(even){
+  float: right;
+}
+
+section.skills .progressBar{
+  height: 5px;
+  background: #e1f0f7;
+  border-radius: 2px;
+  margin: 8px 0 40px;
+
+}
+section.skills .progressBar .progress{
+  height: 100%;
+  width: 70%;
+  background: skyblue;
+ 
+}
+section.portfolio{
+  text-align: center;
+  margin-bottom: 100px;
+
+}
+section.portfolio > nav{
+  text-align: center;
+  display: inline-block;
+  margin-top: 32px;
+}
+
+section.portfolio > nav > ol{
+  display: inline-block;
+  vertical-align: top;
+}
+section.portfolio > nav > ol > li{
+  float: left;
+  margin-left: 40px;
+  cursor: pointer;
+
+}
+section.portfolio > nav > ol > li:nth-child(1){
+  margin-left: 0;
+}
+section.portfolio > nav .bar{
+  height: 5px;
+  background: #d2d2d2;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+section.portfolio > nav .bar-inner{
+  height: 100%;
+  background: #7ac7e6;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+section.portfolio > nav .bar.state-1 .bar-inner{
+  margin-left: 0;
+  width: 50px;
+}
+section.portfolio > nav .bar.state-2 .bar-inner{
+  margin-left: 65px;
+  width: 50px;
+}
+section.portfolio > nav .bar.state-3 .bar-inner{
+  margin-left: 140px;
+  width: 96px;
+}
+
+section.portfolio .works{
+  position: relative;
+
+}
+section.portfolio .works > .big,
+section.portfolio .works > .small{
+  position: absolute;
 }
