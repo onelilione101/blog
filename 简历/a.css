@@ -27,18 +27,42 @@ h1,h2,h3,h4,h5,h6{
   clear: both;
 }
 
+[data-x].offset{
+  transform: translateY(100px);
+}
+[data-x]{
+  transform: translateY(0);
+  transition: all 0.5s;
+}
+@keyframes slideUp{
+  0%{
+    transform: translateY(-30px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
 .topNavBar {
   padding: 20px 0 20px 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  transition: all 0.8s;
+  color: #b7b7b7;
+}
+.topNavBar.sticky{
+  background: #eee;
+  box-shadow:0px 5px 8px 0px rgba(0, 0, 0, 0.4);
+  color:rgb(59, 59, 59);
+  padding: 10px 0;
+  z-index: 2;
 }
 .topNavBar-inner {
   padding: 0 50px;
 }
 .topNavBar nav {
-  padding-top: 7px;
+  padding-top: 4px;
 }
 .topNavBar nav > ul {
   list-style: none;
@@ -49,19 +73,65 @@ h1,h2,h3,h4,h5,h6{
   float: left;
   margin-left: 17px;
   margin-right: 17px;
+  position: relative;
+}
+.topNavBar .submenu{
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #FFF;
+  color: #3d4451;
+  box-shadow: 2px 2px 5px rgba(0,0, 0, 0.5);
+  cursor: default;
+}
+.topNavBar .submenu > li{
+  white-space: nowrap;
+  padding: 5px 10px; 
+}
+.topNavBar li.active > .submenu{
+  display: block;
+  animation: submenuSlide 0.8s;
+}
+@keyframes submenuSlide{
+  0%{
+    margin-right: 100%;
+  }
+  100%{
+    margin-right: 0;
+  }
 }
 .topNavBar nav > ul > li > a {
-  font-size: 12px;
-  color: #b7b7b7;
+  font-size: 15px;
+  color: inherit;
   font-weight: bold;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   padding-top: 5px;
   padding-bottom: 5px;
   display: block;
+  position: relative;
 }
-.topNavBar nav > ul > li > a:hover {
-  border-bottom: 3px solid skyblue;
+.topNavBar nav > ul > li.active > a::after,
+.topNavBar nav > ul > li.highlight > a::after
+ {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  top: 100%;
+  left: 0;
+  background: skyblue;
+  animation: menuSlide 0.8s;
+}
+@keyframes menuSlide{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;;
+  }
 }
 
 .topNavBar .logo {
@@ -79,7 +149,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .banner {
   height: 515px;
-  background-image: url('./99.jpg');
+  background-image: url('./99C.jpg');
   background-position: center center;
   background-size: cover;
 }
@@ -167,7 +237,8 @@ h1,h2,h3,h4,h5,h6{
   width: 40px;
   height: 40px; 
   fill: white;
-  vertical-align: top;
+  vertical-align: top;    /* 这个vertical太厉害了吧  不加它背景就变成椭圆了*/
+  
 }
 .userCard p{
   font-weight: bold;
@@ -250,14 +321,22 @@ section.skills .progressBar{
   background: #e1f0f7;
   border-radius: 2px;
   margin: 8px 0 40px;
+  overflow: hidden;
 
 }
 section.skills .progressBar .progress{
   height: 100%;
   width: 70%;
   background: skyblue;
- 
+  transform: translateX(0);
+  transition: all 1s;
 }
+section.skills.offset .progress{
+  transform: translateX(-100%);
+  
+}
+
+
 section.portfolio{
   text-align: center;
   margin-bottom: 100px;
@@ -288,6 +367,7 @@ section.portfolio > nav .bar{
   border-radius: 2px;
   margin-top: 10px;
   margin-bottom: 30px;
+  
 }
 section.portfolio > nav .bar-inner{
   height: 100%;
@@ -297,10 +377,12 @@ section.portfolio > nav .bar-inner{
 }
 section.portfolio > nav .bar.state-1 .bar-inner{
   margin-left: 0;
+ 
   width: 50px;
 }
 section.portfolio > nav .bar.state-2 .bar-inner{
   margin-left: 65px;
+ 
   width: 50px;
 }
 section.portfolio > nav .bar.state-3 .bar-inner{
