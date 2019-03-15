@@ -234,11 +234,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js">
     </script>
     <script>
-    
-    // setTimeout(function(){
-    //   siteWelcome.classList.remove('active')
-    // },2000)
-
 
     // 添加 offset 类
     let specialTags = document.querySelectorAll('[data-x]')
@@ -258,7 +253,7 @@
           minIndex = i
         }
       }
-      // minIndex 就是里窗口顶部最近的元素
+      // minIndex 离窗口顶部最近的元素
       specialTags[minIndex].classList.remove('offset')
       let id = specialTags[minIndex].id
       let a = document.querySelector('a[href="#'+ id + '"]')
@@ -271,9 +266,6 @@
       li.classList.add('highlight')
     }
 
-    // window.onscroll = function(){
-    //   (window.scrollY > 0)?topNavBar.classList.add('sticky'):topNavBar.classList.remove('sticky');
-    // }
 
     let liTags = document.querySelectorAll('nav.menu > ul > li')
     for(let i=0; i<liTags.length; i++){
