@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>苹果风格轮播</title>
+  <style>
+     *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    }
+    .images{
+      display: flex;
+      transition:all 0.5s;
+      transform:translateX(-480px);
+    }
+    
+    .window{
+      width: 480px;
+      height: 250px;
+      margin:100px auto;
+      margin-bottom:0px;
+      overflow: hidden;
+      border:2px solid pink;
+      border-radius:10px;
+
+    }
+.circle{
+  width: 480px;
+  margin:0 auto;
+  display: flex;
+  border:10px solid transparent;
+
+
+}
+.circle>div{
+  background:none;
+  width: 15px;
+  height: 15px;
+  border-radius:50%;
+  display: inline-block;
+  transition:all 0.3s;
+
+
+}
+.circle>div.active{
+  background:pink;
+}
+
+
+
+
+
+.circle>div:nth-child(1){
+  margin-left:117px;
+}
+.circle>div:nth-child(2){
+  margin-left:55px;
+}
+.circle>div:nth-child(3){
+  margin-left:55px;
+}
+.circle>div:nth-child(4){
+  margin-left:55px;
+}
+.buttons{
+  width: 480px;
+
+  margin:0 auto;
+  display: flex;
+  justify-content:center;
+}
+
+
+.buttons>img{
+  border-radius:50%;
+  overflow: hidden;
+  border:2px solid pink;
+ 
+}
+
+.buttons>img{
+  vertical-align: middle;
+}
+.buttons>img{
+  vertical-align: middle;
+}
+
+
+
+.main{
+  margin:0 auto;
+  width: 480px;
+}
+
+.grey{
+  background:grey;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="window">
+      <div class="images" id="images">
+        <img src="./1.png">
+        <img src="./2.png">
+        <img src="./3.png">
+        <img src="./4.png"> 
+      </div>
+    </div>
+      <div class="circle">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="buttons" id="buttons">
+       <img src="./11.png">
+       <img src="./22.png">
+       <img src="./33.png">
+       <img src="./44.png">
+  
+    </div>
+    </div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    var $buttons = $('#buttons>img')
+    var $slides = $('#images')
+    var $circle = $('.circle>div')
+    var current = 0
+    var $images = $slides.children('img')
+
+ 
+    makeFakeSlides($images)
+    bindEvents()
+
+    //自动轮播
+    var timer = setInterval(() => {
+      goToSlide(current + 1)
+    }, 3000);
+
+    //当用户切换页面时，停止轮播
+    document.addEventListener('visibilitychange',function (e) {
+      if(document.hidden){
+        clearInterval(timer)
+      }else{
+        timer = setInterval(() => {
+      goToSlide(current + 1)
+    }, 3000);
+      }
+    })
+
+    //鼠标移入移出
+    $('.main').on('mouseenter',function (){
+      clearInterval(timer)
+    }).on('mouseleave',function () {
+      timer = setInterval(() => {
+      goToSlide(current + 1)
+    }, 3000);
+    })
+
+    function bindEvents() {
+        $('#buttons').on('click','img',function (e) {
+          let $button = $(e.currentTarget)
+          let index = $button.index()
+          goToSlide(index)
+        })
+    }
+        
+    function goToSlide(index) {
+      if(index > $buttons.length - 1){
+        index = 0
+      }else if(index < 0){
+        index = $buttons.length -1
+      }
+      if(current === $buttons.length-1 && index ===0){
+            //最后一张到第一张
+            $slides.css({transform:`translateX(${-($buttons.length + 1)*480}px)`})
+            .one('transitionend',function () {
+              $slides.hide().offset()
+              $slides.css({transform:`translateX(${-(index + 1)*480}px)`}).show()
+              $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+
+            })
+          }else if(current === 0 && index === $buttons.length-1){
+              //第一张到最后一张
+              $slides.css({transform:`translateX(0px)`})
+                .one('transitionend',function () {
+                $slides.hide().offset()
+                $slides.css({transform:`translateX(${-(index + 1)*480}px)`}).show()
+                $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+          })
+          }else{
+            $slides.css({transform:`translateX(${-(index + 1)*480}px)`})
+            $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+          }
+          current = index
+    }
+
+    function makeFakeSlides($images) {
+        var $firstCopy = $images.eq(0).clone(true)
+        var $lastCopy = $images.eq($images.length-1).clone(true)
+
+        $slides.append($firstCopy)
+        $slides.prepend($lastCopy)
+    }
+
+
+
+
+//   $buttons.eq(0).on('click',function(e){
+//   if(current ==3){
+//      $slides.css({transform:'translateX(-2400px)'})
+//      .one('transitionend',function(){
+//        $slides.hide()
+//        .offset()
+//        $slides.css({transform:'translateX(-480px)'})
+//        .show()
+//      })
+//      var index = $(e.currentTarget).index()
+//      $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//   }else{   
+//       $slides.css({transform:'translateX(-480px)'})
+//       var index = $(e.currentTarget).index()
+//       $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//       current = 0
+//   }
+// })
+
+// $buttons.eq(1).on('click',function(e){
+//   $slides.css({transform:'translateX(-960px)'})
+//   var index = $(e.currentTarget).index()
+//   $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//   current = 1
+// })
+
+// $buttons.eq(2).on('click',function(e){
+//   $slides.css({transform:'translateX(-1440px)'})
+//   var index = $(e.currentTarget).index()
+//   $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//   current = 2
+// })
+
+// $buttons.eq(3).on('click',function(e){
+//   if(current == 0){
+//     $slides.css({transform:'translateX(0px)'})
+//      .one('transitionend',function(){
+//        $slides.hide()
+//        .offset()
+//        $slides.css({transform:'translateX(-1920px)'})
+//        .show()
+//      })
+//      var index = $(e.currentTarget).index()
+//      $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//   }else{
+  
+//   $slides.css({transform:'translateX(-1920px)'})
+//   var index = $(e.currentTarget).index()
+//   $circle.eq(index).addClass('active').siblings('.active').removeClass('active')
+//   current = 3
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
