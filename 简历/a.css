@@ -165,6 +165,7 @@ h1,h2,h3,h4,h5,h6{
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom:70px;
 }
 .userCard .welcome {
   background: skyblue;
@@ -282,7 +283,7 @@ section.skills,
 section.portfolio{
   max-width: 940px;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 120px;
 
 }
 section.skills > h2,
@@ -339,62 +340,71 @@ section.skills.offset .progress{
 
 section.portfolio{
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
+  max-width: 720px;
 
 }
-section.portfolio > nav{
+section.portfolio>h2{
+  margin-bottom: 32px;
+}
+
+section.portfolio .swiper-container {
+  width: 640px;
+  height: 480px;
+}
+
+section.portfolio img{
+  border-radius: 24px;
+}
+
+section.portfolio .swiper-slide{
+  background: white;
+}
+
+section.portfolio .swiper-button-prev{
+  background-color:white;
+  width: 64px;
+  height: 64px;
+  right: 100%;
+  left:auto;
+  border-radius: 50%;
+}
+section.portfolio .swiper-button-next{
+  background-color:white;
+  width: 64px;
+  height: 64px;
+  right:auto;
+  left:100%;
+  border-radius: 50%;
+}
+
+section.message > h2{
   text-align: center;
-  display: inline-block;
-  margin-top: 32px;
-}
-
-section.portfolio > nav > ol{
-  display: inline-block;
-  vertical-align: top;
-}
-section.portfolio > nav > ol > li{
-  float: left;
-  margin-left: 40px;
-  cursor: pointer;
-
-}
-section.portfolio > nav > ol > li:nth-child(1){
-  margin-left: 0;
-}
-section.portfolio > nav .bar{
-  height: 5px;
-  background: #d2d2d2;
-  border-radius: 2px;
-  margin-top: 10px;
   margin-bottom: 30px;
-  
-}
-section.portfolio > nav .bar-inner{
-  height: 100%;
-  background: #7ac7e6;
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-section.portfolio > nav .bar.state-1 .bar-inner{
-  margin-left: 0;
- 
-  width: 50px;
-}
-section.portfolio > nav .bar.state-2 .bar-inner{
-  margin-left: 65px;
- 
-  width: 50px;
-}
-section.portfolio > nav .bar.state-3 .bar-inner{
-  margin-left: 140px;
-  width: 96px;
 }
 
-section.portfolio .works{
-  position: relative;
+section.message > ol,
+section.message{
+  max-width: 640px;
+  margin: 0 auto;
 
 }
-section.portfolio .works > .big,
-section.portfolio .works > .small{
-  position: absolute;
+
+section.message > ol
+{
+  border-top: 1px solid #ddd;
 }
+
+section.message >ol >li{
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
