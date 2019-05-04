@@ -1,0 +1,25 @@
+*{margin:0;padding:0;box-sizing: border-box;transition:all 1.5s;}
+
+.token.function{
+    color:black;
+}
+.token.property{
+    color:black;
+}
+.token.selector{
+    color:black;
+}
+
+
+
+pre{
+    font-family:"微软雅黑";
+    font-size:14px;
+    border-radius:3%;
+    
+}
+
+.code:hover{
+    overflow:auto;
+    
+}
