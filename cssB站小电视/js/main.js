@@ -3,8 +3,8 @@
     let n =0
     let timer = setInterval(()=>{
       n++
-      $('#ccode').html(code.slice(0,n))
-      $('#styleTag').html(code.slice(0,n))
+      ccode.innerHTML = code.slice(0,n)
+      styleTag.innerHTML = code.slice(0,n)
       ccode.scrollTop = ccode.scrollHeight
       if(n >= code.length){
           clearInterval(timer)
