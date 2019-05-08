@@ -23,13 +23,14 @@ body{
     height: 100vh;  width: 100vw;
  }
  .code-wrapper{
-    flex:1;  height:50%;  padding:30px;    
+    flex:1;  height:40%;  padding:20px;
+
 }
 .code{
     overflow:auto;  height: 100%;
 }
 .preview-wrapper{
-    flex:1;  height:50%;
+    flex:1.6;  height:60%;
 }
 
 .bili-wrapper{
